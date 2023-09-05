@@ -2,6 +2,7 @@
 
 # Install New Packages or Update Outdated Packages
 echo "Updating package list..."
+apt-get update && apt-get install -y sudo curl apt-utils
 sudo apt update
 
 # Switch to Root Directory
@@ -92,7 +93,11 @@ then
     else
         echo "nvidia-docker is already installed for GPU support."
     fi
+    # Pull Decenode GPU Image
+    docker pull alisterluiz2000/decenode-gpu
 else
+    # Pull Decenode CPU Image
+    docker pull alisterluiz2000/decenode-cpu
     echo "nvidia-smi not found. GPU support is not available."
 fi
 
